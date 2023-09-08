@@ -41,5 +41,5 @@ SRR18513032_R2.fastq
 ## To verify results
 Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com/hivdb/codfreq).
 > [!IMPORTANT]
-> An error may be encountered in the codfreq's fastp v0.23.4.
+> An error may be encountered in the codfreq's `fastp v0.23.4`. <br>
 > `ERROR: sequence and quality have different length`
