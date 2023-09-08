@@ -42,4 +42,6 @@ SRR18513032_R2.fastq
 Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com/hivdb/codfreq).
 > [!IMPORTANT]
 > An error may be encountered in the codfreq's `fastp v0.23.4`. <br>
-> `ERROR: sequence and quality have different length`
+> `ERROR: sequence and quality have different length` <br>
+
+Install the modified version of codfreq (i.e., just the docker image with the older fastp v0.20.1).
