@@ -53,7 +53,7 @@ SRR18513032_R2.fastq
 
 2. Download the HIV-1 alignment profile.
 	```
-	
+	wget https://raw.githubusercontent.com/omic-analytics/Karumata/main/assets/HIV1.json
 	```
 2. Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com/hivdb/codfreq).
 
