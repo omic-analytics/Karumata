@@ -1,16 +1,27 @@
 ---
-title: "**NGS-Based HIV Drug Resistance Report**"
-output: 
+title: "\\textbf{NGS-Based HIV Drug Resistance Report}"
+output:
   pdf_document:
-    includes:
-      in_header: "`r params.header`"
-    keep_tex: true
-    
-nocite: '@*'
-bibliography: refs.bib
+header-includes:
+  - "\\usepackage{fancyhdr}"
+  - "\\usepackage{amsfonts,amssymb,amsmath}"
+  - "\\usepackage{titlesec}"
+  - "\\usepackage{soul}"
+  - "\\usepackage{datetime}"
+  - "\\usepackage{helvet}"
+  - "\\pagestyle{fancy}"
+  - "\\fancyhf{}"
+  - "\\fancyhead[LE,RO]{Version 1.0.0}"
+  - "\\fancyhead[RE,LO]{Karumata pipeline}"
+  - "\\fancyfoot[RE,LO]{Report created on \\today}"
+  - "\\fancyfoot[LE,RO]{\\thepage}"
+  - "\\fancypagestyle{plain}{\\pagestyle{fancy}}"
+  - "\\renewcommand{\\familydefault}{\\sfdefault}"
+  - "\\renewcommand{\\headrulewidth}{2pt}"
+  - "\\renewcommand{\\footrulewidth}{1pt}"
+  - "\\titleformat{\\subsection}{\\large\\bfseries\\rlap{\\color{blue!50}\\rule[0.0ex]{\\linewidth}{3ex}\\vspace{-4.2ex}}\\large\\color{white}}{\\thesubsection}{1em}{}"
 
 params:
-  header: ""
   dr_report_hivdb: ""
   mutation_comments: ""
   mutational_threshold: 0
@@ -287,4 +298,3 @@ if(dim(RT_df)[1]>1){
 }
 ```
 
-## **References**
