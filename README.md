@@ -15,7 +15,12 @@ nextflow run Karumata \
 --out_dir result 
 ```
 
-#### File name Patterns
+
+
+<details>
+<summary>File name Patterns</summary>
+<br>
+
 For files with the following pattern, use `*_{1,2}.fastq`
 ```
 SRR18513032_1.fastq
@@ -27,3 +32,4 @@ For files with the following pattern, use `*_{R1,R2}.fastq`
 SRR18513032_R1.fastq
 SRR18513032_R2.fastq
 ```
+</details>
