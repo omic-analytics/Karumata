@@ -2,7 +2,7 @@
  HIV pipeline
 
 
-<img src="https://github.com/omic-analytics/Karumata/blob/main/assets/karumata_Illumina.jpg" width="200">
+<img src="https://github.com/omic-analytics/Karumata/blob/main/assets/karumata_Illumina.jpg" width="700">
 
 ## How to run
 Assume that the fastq files have the following names:
