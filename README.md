@@ -39,16 +39,26 @@ SRR18513032_R2.fastq
 
 
 ## To verify results
-Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com/hivdb/codfreq).
 > [!WARNING]
-> An error may be encountered in the codfreq's `fastp v0.23.4`. <br>
+> An error may be encountered in codfreq's `fastp v0.23.4`. <br>
 > `ERROR: sequence and quality have different length` <br>
 
-Install the modified version of codfreq (i.e., just the docker image with the older fastp v0.20.1).
+1. Install the modified version of `codfreq` (i.e., just the docker image with the older `fastp v0.20.1`).
+
+	```
+	sudo curl -sL https://raw.githubusercontent.com/omic-analytics/Karumata/main/assets/modified_fastq2codfreq -o /usr/local/bin/fastq2codfreq
+
+	sudo chmod +x /usr/local/bin/fastq2codfreq
+	```
+
+2. Download the HIV-1 alignment profile.
+	```
+	
+	```
+2. Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com/hivdb/codfreq).
 
 ```
-sudo curl -sL https://raw.githubusercontent.com/omic-analytics/Karumata/main/assets/modified_fastq2codfreq -o /usr/local/bin/fastq2codfreq
-
-sudo chmod +x /usr/local/bin/fastq2codfreq
 
 ```
+
+3. 
