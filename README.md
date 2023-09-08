@@ -39,7 +39,7 @@ SRR18513032_R2.fastq
 
 
 ## To verify results
-[Stanford University HIV Drug Resistance Database](https://hivdb.stanford.edu/) will be used after creating `codfreq files` from the `raw fastq files`.
+[Stanford University HIV Drug Resistance Database](https://hivdb.stanford.edu/) will be used after creating [codfreq](https://github.com/hivdb/codfreq) files from the `raw fastq files`.
 
 > [!WARNING]
 > An error may be encountered in codfreq's `fastp v0.23.4`. <br>
@@ -65,3 +65,4 @@ SRR18513032_R2.fastq
 	fastq2codfreq -r ./path/to/HIV1.json -d ./fastq_4codefreq/
 	```
 5. Upload the codfreq files to [Stanford HIVdb](https://hivdb.stanford.edu/hivdb/by-reads/).
+
