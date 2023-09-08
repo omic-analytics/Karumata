@@ -45,3 +45,10 @@ Create `codfreq` files from raw `fastq` files using [codfreq](https://github.com
 > `ERROR: sequence and quality have different length` <br>
 
 Install the modified version of codfreq (i.e., just the docker image with the older fastp v0.20.1).
+
+```
+sudo curl -sL https://raw.githubusercontent.com/omic-analytics/Karumata/main/assets/modified_fastq2codfreq -o /usr/local/bin/fastq2codfreq
+
+sudo chmod +x /usr/local/bin/fastq2codfreq
+
+```
