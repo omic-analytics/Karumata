@@ -23,7 +23,7 @@ nextflow run Karumata \
 
 1. Install [Docker Engine](https://docs.docker.com/get-docker/).
 
-2. Install the modified version of `codfreq` (i.e., just the docker image with the older `fastp v0.20.1`).
+2. Install the modified version of `codfreq` (i.e., a docker image with the older `fastp v0.20.1`).
 
 	```
 	sudo curl -sL https://raw.githubusercontent.com/omic-analytics/Karumata/main/assets/modified_fastq2codfreq -o /usr/local/bin/fastq2codfreq
