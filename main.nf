@@ -13,13 +13,13 @@ workflow {
 
 
 	Channel
-		.fromFilePairs(params.reads, flat:true)
+		.fromFilePairs("$PWD/${params.reads}/*_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
 		.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
 		.set{ch_sample}
 		
 
 	main:
-		//ch_sample.view()
+		ch_sample.view()
 		fastP(ch_sample)
 		//kraken(fastP.out.trimmed, params.krakenDB)
 		hydra(fastP.out.trimmed)
