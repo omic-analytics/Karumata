@@ -20,8 +20,16 @@ process sierra {
 
 	script:
 	"""
-	sierralocal $fasta \
-	-o consensus_${sample}.json \
-	-xml ${params.sierraXML}
+
+
+
+	if [ -s $fasta ]; then
+		# The file is not-empty.
+		sierralocal $fasta \
+		-o consensus_${sample}.json \
+		-xml ${params.sierraXML}
+	else
+		echo "Skipping since there is no consensus sequence"
+	fi
 	"""
 }
