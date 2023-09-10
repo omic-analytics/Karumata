@@ -19,7 +19,7 @@ workflow {
 		
 
 	main:
-		ch_sample.view()
+		//ch_sample.view()
 		fastP(ch_sample)
 		//kraken(fastP.out.trimmed, params.krakenDB)
 		hydra(fastP.out.trimmed)
