@@ -1,6 +1,6 @@
 process sierra {
 	cpus 1
-	container 'alfredug/sierralocal:v0.0.1'
+	container 'ufuomababatunde/sierralocal:1.3.0'
 
 	tag "Creating JSON file for $sample"
 	
