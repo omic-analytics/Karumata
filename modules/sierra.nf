@@ -26,10 +26,16 @@ process sierra {
 	if [ -s $fasta ]; then
 		# The file is not-empty.
 		sierralocal $fasta \
-		-o consensus_${sample}.json \
+		-o tmp.json \
 		-xml ${params.sierraXML}
+
+		checkJSON.py --json tmp.json
+		mv tmp.json consensus_${sample}.json
+	
 	else
 		echo "Skipping since there is no consensus sequence"
 	fi
+
+
 	"""
 }

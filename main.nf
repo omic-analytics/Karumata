@@ -24,8 +24,7 @@ workflow {
 		//kraken(fastP.out.trimmed, params.krakenDB)
 		hydra(fastP.out.trimmed)
 		sierra(hydra.out.consensus)
-		report(sierra.out.json, params.reportPDF)
-		//report(sierra.out.json)
+		//report(sierra.out.json, params.reportPDF)
 
 }
 

@@ -19,7 +19,7 @@ process report{
 
 	output:
 	//tuple val(sample), path('hivdr_*.html'), path('hivdr_*.pdf'), emit: report
-	tuple val(sample), path('*.pdf'), emit: report
+	tuple val(sample), path('*.pdf'), optional: true, emit: report
 
 	script:
 	"""
