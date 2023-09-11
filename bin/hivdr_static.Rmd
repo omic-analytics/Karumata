@@ -130,7 +130,6 @@ if("PR"%in%genes){
   PR_comments_list<-PR_comments$Comment
   firstAA_PR=AApositions$firstAA[AApositions$gene.name=="PR"]
   lastAA_PR=AApositions$lastAA[AApositions$gene.name=="PR"]
-  print("Noice")
   }
 
 RT_NNRTI = ""
@@ -152,7 +151,6 @@ if("RT"%in%genes){
   RT_comments_list<-RT_comments$Comment
   firstAA_RT=AApositions$firstAA[AApositions$gene.name=="RT"]
   lastAA_RT=AApositions$lastAA[AApositions$gene.name=="RT"]
-  print("Noice")
 }
 
 IN_major=""
@@ -175,7 +173,6 @@ if("IN"%in%genes){
   IN_comments_list<-IN_comments$Comment
   firstAA_IN=AApositions$firstAA[AApositions$gene.name=="IN"]
   lastAA_IN=AApositions$lastAA[AApositions$gene.name=="IN"]
-  print("Noice")
 
 }
 
