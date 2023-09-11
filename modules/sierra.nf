@@ -29,8 +29,7 @@ process sierra {
 		-o tmp.json \
 		-xml ${params.sierraXML}
 
-		checkJSON.py --json tmp.json
-		mv tmp.json consensus_${sample}.json
+		checkJSON.py --json tmp.json --sample ${sample}
 	
 	else
 		echo "Skipping since there is no consensus sequence"
