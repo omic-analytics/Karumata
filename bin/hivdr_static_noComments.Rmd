@@ -216,15 +216,6 @@ mutationList_display<-function(x){
 
 **PR Other Mutations**: `r mutationList_display(PR_Other)`
 
-**Comments**: `r if(length(PR_comments_list)<1){"None"}`
-
-```{r, echo=FALSE}
-if(length(PR_comments_list)>0){
-  PR_comments_list<-data.frame(unique(PR_comments_list))
-  names(PR_comments_list)<-""
-  knitr::kable(unique(PR_comments_list), align = "l", row.names=FALSE)
-}
-```
 
 #### **Drug resistance mutation scoring: PR**
 
@@ -248,15 +239,6 @@ knitr::kable(PR_df[2:4], row.names=FALSE)
 
 **RT Other Mutations**: `r mutationList_display(RT_Other)`
 
-**Comments**: `r if(length(RT_comments_list)<1){"None"}`
-
-```{r,echo=FALSE}
-if(length(RT_comments_list)>0){
-  RT_comments_list<-data.frame(unique(RT_comments_list))
-  colnames(RT_comments_list)<-""
-  knitr::kable(RT_comments_list, align = "l", row.names=FALSE)
-}
-```
 
 #### **Drug resistance mutation scoring: NRTI**
 
@@ -290,15 +272,6 @@ knitr::kable(RT_df[2:4], row.names=FALSE)
 
 **IN Other Mutations**: `r mutationList_display(IN_Other)`
 
-**Comments**: `r if(length(IN_comments_list)<1){"None"}`
-
-```{r,echo=FALSE}
-if(length(IN_comments_list)>0){
-  IN_comments_list<-data.frame(unique(IN_comments_list))
-  colnames(IN_comments_list)<-""
-  knitr::kable(IN_comments_list, align = "l", row.names=FALSE) 
-}
-```
 
 #### **Drug resistance mutation scoring: IN**
 ```{r,echo=FALSE}
