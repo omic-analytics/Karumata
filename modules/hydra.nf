@@ -1,5 +1,4 @@
 process hydra {
-	cpus 1
 	container 'alfredug/quasitools:v0.0.1'
 
 	tag "Doing magic on $sample"
