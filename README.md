@@ -9,10 +9,13 @@ Assume that the fastq files are in the `dataSet_Illumina_HIV` directory and you 
 
 ```
 nextflow run Karumata \
+--illumina \
 --reads dataSet_Illumina_HIV \
 --out_dir result 
 ```
 
+>[!NOTE]
+> Replace `--illumina` with `--ont` if you are dealing with ONT reads.
 
 ## To verify results
 [Stanford University HIV Drug Resistance Database](https://hivdb.stanford.edu/) will be used after creating [codfreq](https://github.com/hivdb/codfreq) files from the `raw fastq files`.
