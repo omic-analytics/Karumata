@@ -7,6 +7,8 @@ include {fastP} from '../modules/fastP.nf'
 include {hydra} from '../modules/hydra.nf'
 include {sierra} from '../modules/sierra.nf'
 include {reportDrugResistance} from '../modules/reportDrugResistance.nf'
+include {fastPStats} from '../modules/fastPStats.nf'
+include {fastPStatsCombine} from '../modules/fastPStatsCombine.nf'
 
 workflow illumina {
 
@@ -20,9 +22,11 @@ workflow illumina {
 	main:
 		//ch_sample.view()
 		fastP(ch_sample)
-		hydra(fastP.out.trimmed)
-		sierra(hydra.out.consensus)
-		reportDrugResistance(sierra.out.json, params.reportPDF)
+		fastPStats(fastP.out.json)
+		fastPStatsCombine(fastPStats.out.stats.collect())
+		//hydra(fastP.out.trimmed)
+		//sierra(hydra.out.consensus)
+		//reportDrugResistance(sierra.out.json, params.reportPDF)
 
 }
 
