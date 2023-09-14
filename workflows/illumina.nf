@@ -24,7 +24,7 @@ workflow illumina {
 		fastP(ch_sample)
 		fastPStats(fastP.out.json)
 		fastPStatsCombine(fastPStats.out.stats.collect())
-		//hydra(fastP.out.trimmed)
+		hydra(fastP.out.trimmed)
 		//sierra(hydra.out.consensus)
 		//reportDrugResistance(sierra.out.json, params.reportPDF)
 

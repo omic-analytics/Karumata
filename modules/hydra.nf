@@ -1,5 +1,5 @@
 process hydra {
-	container 'alfredug/quasitools:v0.0.1'
+	container 'ufuomababatunde/quasitools:v1.0.0'
 
 	tag "Doing magic on $sample"
 
@@ -18,7 +18,8 @@ process hydra {
 	output:
 	path("${sample}/*")
 	tuple val(sample), path("${sample}/*.fasta"), emit: consensus
-
+	tuple val(sample), path("*.hydra.csv"), emit: stats
+	tuple val(sample), path("*.coverage.csv"), emit: coverage
 
 	script:
 	"""
@@ -35,6 +36,21 @@ process hydra {
 	--min_freq ${params.hydraMinVariantFrequency} \
 	--id ${sample} \
 	--output_dir ${sample}
+
+
+	extractHydraStats.py \
+	--in ${sample}/stats.txt \
+	--sample ${sample} \
+	--out ${sample}.hydra.csv
+
+
+	samtools coverage -H \
+	${sample}/align.bam > ${sample}.coverage.csv
+
+	sed -i 's/\t/,/g' ${sample}.coverage.csv
+	sed -i "s/hxb2_pol/'${sample}'/g" ${sample}.coverage.csv
+	sed -i "s/'//g" ${sample}.coverage.csv
+	sed -i '1 i\\Sample,StartPosition,EndPosition,NumberOfReads,NumberOfBasesCoveredAcrossGenome,PercentCoverage,MeanDepthCoverage,MeanBaseQuality,MeanMappingQuality' ${sample}.coverage.csv
 	"""
 
 }
