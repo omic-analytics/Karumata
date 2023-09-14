@@ -6,7 +6,7 @@ nextflow.enable.dsl=2
 include {fastP} from '../modules/fastP.nf'
 include {hydra} from '../modules/hydra.nf'
 include {sierra} from '../modules/sierra.nf'
-include {report} from '../modules/report.nf'
+include {reportDrugResistance} from '../modules/reportDrugResistance.nf'
 
 workflow illumina {
 
@@ -22,7 +22,7 @@ workflow illumina {
 		fastP(ch_sample)
 		hydra(fastP.out.trimmed)
 		sierra(hydra.out.consensus)
-		report(sierra.out.json, params.reportPDF)
+		reportDrugResistance(sierra.out.json, params.reportPDF)
 
 }
 

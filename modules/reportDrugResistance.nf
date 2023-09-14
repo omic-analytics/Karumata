@@ -1,4 +1,4 @@
-process report{
+process reportDrugResistance{
 	container 'ufuomababatunde/rmarkdown:1.0.0'
 
 	tag "Doing magic on $sample"
