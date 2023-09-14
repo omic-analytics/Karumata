@@ -19,17 +19,16 @@ process report{
 	output:
 	tuple val(sample), path('*.pdf'), optional: true, emit: report
 
+	//4 spaces should be used instead of tab 
 	script:
 	"""
-	Rscript -e 'rmarkdown::render("${reportPDF}", 
-		params=list(
-			mutation_comments="${params.sierraMutationDBComments}",
-			dr_report_hivdb="${json}",
-			mutational_threshold=${params.hydraMinVariantFrequency},
-			minimum_read_depth=${params.hydraMinVariantDepth},
-			minimum_percentage_cons=${params.hydraConsensusPercent}), 
-			output_file="hivdr_${sample}.pdf", output_dir = getwd()
-		)
-	'
+        Rscript -e 'rmarkdown::render("${reportPDF}", 
+            params=list(
+                mutation_comments="${params.sierraMutationDBComments}",
+                dr_report_hivdb="${json}",
+                mutational_threshold=${params.hydraMinVariantFrequency},
+                minimum_read_depth=${params.hydraMinVariantDepth},
+                minimum_percentage_cons=${params.hydraConsensusPercent}), 
+                output_file="hivdr_${sample}.pdf", output_dir = getwd())'
 	"""
 }
