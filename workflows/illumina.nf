@@ -4,11 +4,20 @@ nextflow.enable.dsl=2
 
 // import modules
 include {fastP} from '../modules/fastP.nf'
-include {hydra} from '../modules/hydra.nf'
-include {sierra} from '../modules/sierra.nf'
-include {reportDrugResistance} from '../modules/reportDrugResistance.nf'
 include {fastPStats} from '../modules/fastPStats.nf'
 include {fastPStatsCombine} from '../modules/fastPStatsCombine.nf'
+
+include {hydra} from '../modules/hydra.nf'
+include {hydraStats} from '../modules/hydraStats.nf'
+include {hydraStatsCombine} from '../modules/hydraStatsCombine.nf'
+
+
+include {sierra} from '../modules/sierra.nf'
+include {reportDrugResistance} from '../modules/reportDrugResistance.nf'
+include {drugResistanceScoreCombine} from '../modules/drugResistanceScoreCombine.nf'
+
+
+
 
 workflow illumina {
 
@@ -25,7 +34,10 @@ workflow illumina {
 		fastPStats(fastP.out.json)
 		fastPStatsCombine(fastPStats.out.stats.collect())
 		hydra(fastP.out.trimmed)
-		//sierra(hydra.out.consensus)
+		hydraStats(hydra.out.stats, hydra.out.coverage)
+		hydraStatsCombine(hydraStats.out.stats.collect())
+		sierra(hydra.out.consensus)
+		drugResistanceScoreCombine(sierra.out.csv.collect())
 		//reportDrugResistance(sierra.out.json, params.reportPDF)
 
 }

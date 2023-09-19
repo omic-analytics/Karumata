@@ -1,10 +1,11 @@
-process fastPStatsCombine {
+process drugResistanceScoreCombine {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
+	tag "Collecting samples"
 
 	
 	publishDir (
-	path: "${params.out_dir}/01_fastP/",
+	path: "${params.out_dir}/04_sierra/",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -15,14 +16,14 @@ process fastPStatsCombine {
 	path(csv)
 
 	output:
-	path("combinedFastPStats.csv")
+	path("combinedDRscores.csv")
 
 
 	script:
 	"""
-	combineFastPStats.py \
-	$csv \
-	--out combinedFastPStats.csv
+	combineDRscores.py \
+	combinedDRscores.csv \
+	$csv
 
 	
 	"""

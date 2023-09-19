@@ -16,6 +16,7 @@ process sierra {
 
 	output:
 	tuple val(sample), path('consensus*.json'), optional: true, emit: json
+	path('*.drugResistanceScore.csv'), optional: true, emit: csv
 
 	script:
 	"""
@@ -29,6 +30,8 @@ process sierra {
 		-xml ${params.sierraXML}
 
 		checkJSON.py --json tmp.json --sample ${sample}
+
+		extractResistanceScore.py --json consensus_${sample}.json --csv ${sample}.drugResistanceScore.csv --sample ${sample}
 	
 	else
 		echo "Skipping since there is no consensus sequence"

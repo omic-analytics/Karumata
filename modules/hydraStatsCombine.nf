@@ -1,10 +1,10 @@
-process fastPStatsCombine {
+process hydraStatsCombine {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 
 	
 	publishDir (
-	path: "${params.out_dir}/01_fastP/",
+	path: "${params.out_dir}/03_hydra/",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -15,14 +15,14 @@ process fastPStatsCombine {
 	path(csv)
 
 	output:
-	path("combinedFastPStats.csv")
+	path("combinedHydraStats.csv")
 
 
 	script:
 	"""
-	combineFastPStats.py \
+	combineHydraStats.py \
 	$csv \
-	--out combinedFastPStats.csv
+	--out combinedHydraStats.csv
 
 	
 	"""

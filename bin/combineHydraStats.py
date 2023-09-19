@@ -19,29 +19,6 @@ input_files = args.input_files
 # Use the specified output file
 output_file = args.out
 
-# Define the desired column order
-desired_columns = [
-    "Sample",
-    "BeforeFiltering_TotalReads",
-    "AfterFiltering_TotalReads",
-    "BeforeFiltering_TotalBases",
-    "AfterFiltering_TotalBases",
-    "BeforeFiltering_Q20Bases",
-    "AfterFiltering_Q20Bases",
-    "BeforeFiltering_Q30Bases",
-    "AfterFiltering_Q30Bases",
-    "BeforeFiltering_Q20Rate",
-    "AfterFiltering_Q20Rate",
-    "BeforeFiltering_Q30Rate",
-    "AfterFiltering_Q30Rate",
-    "BeforeFiltering_Read1MeanLength",
-    "AfterFiltering_Read1MeanLength",
-    "BeforeFiltering_Read2MeanLength",
-    "AfterFiltering_Read2MeanLength",
-    "BeforeFiltering_GCcontent",
-    "AfterFiltering_GCcontent"
-]
-
 # Initialize an empty list to store combined data
 combined_data = []
 
@@ -66,12 +43,10 @@ for file_name in input_files:
 # Deduplicate headers (in case there are duplicates)
 headers = list(set(headers))
 
-# Ensure the headers are in the desired order
-ordered_headers = [col for col in desired_columns if col in headers]
 
 # Write the combined data to the output CSV file with the desired column order
 with open(output_file, 'w', newline='') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=ordered_headers)
+    writer = csv.DictWriter(csvfile, fieldnames=headers)
     
     # Write the header row
     writer.writeheader()
