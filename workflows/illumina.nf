@@ -10,6 +10,7 @@ include {fastPStatsCombine} from '../modules/fastPStatsCombine.nf'
 include {hydra} from '../modules/hydra.nf'
 include {hydraStats} from '../modules/hydraStats.nf'
 include {hydraStatsCombine} from '../modules/hydraStatsCombine.nf'
+include {resistanceMutationCombine} from '../modules/resistanceMutationCombine.nf'
 
 
 include {sierra} from '../modules/sierra.nf'
@@ -36,9 +37,10 @@ workflow illumina {
 		hydra(fastP.out.trimmed)
 		hydraStats(hydra.out.stats, hydra.out.coverage)
 		hydraStatsCombine(hydraStats.out.stats.collect())
+		resistanceMutationCombine(hydra.out.drugResistance.collect())
 		sierra(hydra.out.consensus)
 		drugResistanceScoreCombine(sierra.out.csv.collect())
-		//reportDrugResistance(sierra.out.json, params.reportPDF)
+		reportDrugResistance(sierra.out.json, params.reportPDF)
 
 }
 

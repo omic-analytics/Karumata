@@ -1,3 +1,6 @@
+// Run kraken2 to classify reads into taxa
+// Use to determine the proportion of HIV reads
+
 process kraken {
 	container 'staphb/kraken2:2.1.2-no-db'
 
@@ -28,5 +31,6 @@ process kraken {
 	--unclassified-out ${sample}_#.unclassified.fastq \
 	--db $krakenDB \
 	--report ${sample}.kraken2.report.txt
+	
 	"""
 }

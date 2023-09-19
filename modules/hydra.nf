@@ -1,3 +1,7 @@
+// Run hydra alignment and detection of drug resistance mutation
+// Run samtools depth to determine the mean depth of coverage etc.
+// Rename the headers and the output files themselves.
+
 process hydra {
 	container 'ufuomababatunde/quasitools:v1.0.0'
 
@@ -5,8 +9,8 @@ process hydra {
 
 	
 	publishDir (
-	path: "${params.out_dir}/03_hydra/",
-	pattern: "*.consensus.fasta, ",
+	path: "${params.out_dir}/02_hydra/",
+	pattern: "*.consensus.fasta",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -17,11 +21,11 @@ process hydra {
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
-	path("${sample}/*")
+	//path("${sample}/*")
 	tuple val(sample), path("${sample}/*.fasta"), emit: consensus
 	tuple val(sample), path("*.hydraFilter.csv"), emit: stats
 	tuple val(sample), path("*.coverage.csv"), emit: coverage
-	tuple val(sample), path("*_drugResistanceMutation.csv"), emit: drugResistance
+	path("*_drugResistanceMutation.csv"), emit: drugResistance
 
 	script:
 	"""
@@ -42,6 +46,7 @@ process hydra {
 	cp ${sample}/consensus.fasta ${sample}.consensus.fasta
 
 	sed "s/hxb2_pol/${sample}/g" ${sample}/dr_report.csv > ${sample}_drugResistanceMutation.csv
+	sed -i 's/Chromosome/Sample/g' ${sample}_drugResistanceMutation.csv
 
 	extractHydraStats.py \
 	--in ${sample}/stats.txt \
@@ -56,7 +61,5 @@ process hydra {
 	sed -i "s/hxb2_pol/${sample}/g" ${sample}.coverage.csv
 	sed -i '1 i\\Sample,StartPosition,EndPosition,NumberOfReads,NumberOfBasesCoveredAcrossGenome,PercentCoverage,MeanDepthCoverage,MeanBaseQuality,MeanMappingQuality' ${sample}.coverage.csv
 	
-
 	"""
-
 }

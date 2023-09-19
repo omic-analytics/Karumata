@@ -1,3 +1,5 @@
+// Creates a pdf report of the drug resistance mutation
+
 process reportDrugResistance{
 	container 'ufuomababatunde/rmarkdown:1.0.0'
 
@@ -5,7 +7,7 @@ process reportDrugResistance{
 
 	
 	publishDir (
-	path: "${params.out_dir}/05_reports/",
+	path: "${params.out_dir}/04_reports/",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -30,5 +32,6 @@ process reportDrugResistance{
                 minimum_read_depth=${params.hydraMinVariantDepth},
                 minimum_percentage_cons=${params.hydraConsensusPercent}), 
                 output_file="hivdr_${sample}.pdf", output_dir = getwd())'
+		
 	"""
 }

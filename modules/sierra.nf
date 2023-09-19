@@ -1,10 +1,12 @@
+// Identify the drug resistance score of the detected mutations
+
 process sierra {
 	container 'ufuomababatunde/sierralocal:1.3.0'
 
 	tag "Creating JSON file for $sample"
 	
 	publishDir (
-	path: "${params.out_dir}/04_sierra/",
+	path: "${params.out_dir}/03_sierra/",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -20,9 +22,6 @@ process sierra {
 
 	script:
 	"""
-
-
-
 	if [ -s $fasta ]; then
 		# The file is not-empty.
 		sierralocal $fasta \
@@ -36,7 +35,6 @@ process sierra {
 	else
 		echo "Skipping since there is no consensus sequence"
 	fi
-
 
 	"""
 }

@@ -1,15 +1,12 @@
+// Extract the filtering statistics from hydra and
+// the depth of coverage then combine into a csv file
+
 process hydraStats {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 	tag "Extracting from $sample"
 
 	
-	publishDir (
-	path: "${params.out_dir}/03_hydra/",
-	mode: 'copy',
-	overwrite: 'true'
-	)
-
 	//errorStrategy 'ignore'
 	
 	input:
@@ -25,6 +22,7 @@ process hydraStats {
 	--hydra $hydra \
 	--coverage $coverage \
 	--out ${sample}.hydraFilterAlignment.csv
+	
 	"""
 
 }

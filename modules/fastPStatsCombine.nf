@@ -1,3 +1,6 @@
+// Combine the extracted fastP statistics
+// of each sample into a single csv file
+
 process fastPStatsCombine {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
@@ -24,7 +27,5 @@ process fastPStatsCombine {
 	$csv \
 	--out combinedFastPStats.csv
 
-	
 	"""
-
 }

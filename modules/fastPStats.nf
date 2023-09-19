@@ -1,3 +1,6 @@
+// Extract fastP statistics before and after filtering
+// and save into a single csv file per sample.
+
 process fastPStats {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
@@ -20,7 +23,5 @@ process fastPStats {
 	--sample ${sample} \
 	--out ${sample}.csv
 
-	
 	"""
-
 }

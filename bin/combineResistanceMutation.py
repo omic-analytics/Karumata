@@ -19,26 +19,20 @@ input_files = args.input_files
 # Use the specified output file
 output_file = args.out
 
-
 # Define the desired column order
 desired_columns = [
     "Sample",
-    "Input Size",
-    "Number of reads filtered due to length",
-    "Number of reads filtered due to average quality score",
-    "Number of reads filtered due to presence of Ns",
-    "Number of reads filtered due to excess coverage",
-    "Number of reads filtered due to poor mapping",
-    "Percentage of reads filtered",
-    "StartPosition",
-    "EndPosition",
-    "NumberOfReads",
-    "NumberOfBasesCoveredAcrossGenome",
-    "PercentCoverage",
-    "MeanDepthCoverage",
-    "MeanBaseQuality",
-    "MeanMappingQuality"
+    "Gene",
+    "Category",
+    "Surveillance",
+    "Wildtype",
+    "Position",
+    "Mutation",
+    "Mutation Frequency",
+    "Coverage"
 ]
+						
+
 
 
 # Initialize an empty list to store combined data
@@ -65,9 +59,9 @@ for file_name in input_files:
 # Deduplicate headers (in case there are duplicates)
 headers = list(set(headers))
 
+
 # Ensure the headers are in the desired order
 ordered_headers = [col for col in desired_columns if col in headers]
-
 
 # Write the combined data to the output CSV file with the desired column order
 with open(output_file, 'w', newline='') as csvfile:

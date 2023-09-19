@@ -1,3 +1,7 @@
+// Combine csv files containing drug resistance scores from hydra 
+
+
+
 process drugResistanceScoreCombine {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
@@ -25,7 +29,5 @@ process drugResistanceScoreCombine {
 	combinedDRscores.csv \
 	$csv
 
-	
 	"""
-
 }

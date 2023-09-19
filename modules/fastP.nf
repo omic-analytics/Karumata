@@ -1,7 +1,9 @@
+// Trim out low quality reads and adapters
+
 process fastP {
 	container 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
 
-	tag "trimming $sample"
+	tag "Trimming $sample"
 
 	
 	publishDir (
@@ -32,5 +34,4 @@ process fastP {
 	-h ${sample}.fastp.html
 
 	"""
-
 }

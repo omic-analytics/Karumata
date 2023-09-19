@@ -1,7 +1,7 @@
-// Combine the filtering and alignment statistics
-// from each sample into a single csv file
+// Combine the drug resistance mutations
+// detected by hydra
 
-process hydraStatsCombine {
+process resistanceMutationCombine {
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 
@@ -18,14 +18,14 @@ process hydraStatsCombine {
 	path(csv)
 
 	output:
-	path("combinedHydraStats.csv")
+	path("combinedResistanceMutation.csv")
 
 
 	script:
 	"""
-	combineHydraStats.py \
+	combineResistanceMutation.py \
 	$csv \
-	--out combinedHydraStats.csv
+	--out combinedResistanceMutation.csv
 
 	"""
 }
