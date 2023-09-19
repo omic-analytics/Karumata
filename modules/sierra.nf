@@ -29,12 +29,18 @@ process sierra {
 		-xml ${params.sierraXML}
 
 		checkJSON.py --json tmp.json --sample ${sample}
-
-		extractResistanceScore.py --json consensus_${sample}.json --csv ${sample}.drugResistanceScore.csv --sample ${sample}
-	
 	else
 		echo "Skipping since there is no consensus sequence"
 	fi
+
+
+	if [ -s consensus_${sample}.json ]; then
+		# If there is alignment.
+		extractResistanceScore.py --json consensus_${sample}.json --csv ${sample}.drugResistanceScore.csv --sample ${sample}
+	else
+		echo "Skipping since there is no enough alignment to any gene"
+	fi
+
 
 	"""
 }
