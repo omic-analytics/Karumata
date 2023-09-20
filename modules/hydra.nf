@@ -22,10 +22,11 @@ process hydra {
 
 	output:
 	//path("${sample}/*")
-	tuple val(sample), path("${sample}/*.fasta"), emit: consensus
+	tuple val(sample), path("*.consensus.fasta"), emit: consensus
 	tuple val(sample), path("*.hydraFilter.csv"), emit: stats
 	tuple val(sample), path("*.coverage.csv"), emit: coverage
 	path("*_drugResistanceMutation.csv"), emit: drugResistance
+
 
 	script:
 	"""
