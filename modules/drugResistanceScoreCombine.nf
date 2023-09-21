@@ -9,7 +9,7 @@ process drugResistanceScoreCombine {
 
 	
 	publishDir (
-	path: "${params.out_dir}/04_sierra/",
+	path: "${params.out_dir}/03_sierra/",
 	mode: 'copy',
 	overwrite: 'true'
 	)
