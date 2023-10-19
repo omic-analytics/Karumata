@@ -10,7 +10,7 @@ process hydra {
 	
 	publishDir (
 	path: "${params.out_dir}/02_hydra/",
-	pattern: "*.consensus.fasta",
+	pattern: "{*.consensus.fasta, *.bam*}",
 	mode: 'copy',
 	overwrite: 'true'
 	)
