@@ -25,8 +25,8 @@ process hydra {
 	tuple val(sample), path("*.consensus.fasta"), emit: consensus
 	tuple val(sample), path("*.hydraFilter.csv"), emit: stats
 	tuple val(sample), path("*.coverage.csv"), emit: coverage
-	tuple val(sample), path("*.bam"), emit: bam
-	tuple val(sample), path("*.bam.bai"), emit: bambai
+	tuple val(sample), path("*.bam"), optional: true, emit: bam
+	tuple val(sample), path("*.bam.bai"), optional: true, emit: bambai
 	path("*_drugResistanceMutation.csv"), emit: drugResistance
 
 
