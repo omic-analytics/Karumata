@@ -60,6 +60,9 @@ process hydra {
 	samtools coverage -H \
 	${sample}/align.bam > ${sample}.coverage.csv
 
+	mv ${sample}/align.bam ${sample}.bam
+	mv ${sample}/align.bam.bai ${sample}.bam.bai
+
 	sed -i 's/\t/,/g' ${sample}.coverage.csv
 	sed -i "s/hxb2_pol/${sample}/g" ${sample}.coverage.csv
 	sed -i '1 i\\Sample,StartPosition,EndPosition,NumberOfReads,NumberOfBasesCoveredAcrossGenome,PercentCoverage,MeanDepthCoverage,MeanBaseQuality,MeanMappingQuality' ${sample}.coverage.csv
