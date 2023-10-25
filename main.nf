@@ -15,8 +15,12 @@ workflow {
 			ont()
 		}
 		else {
-			println("\nYow! It's your boy, Ufuoma, here.")
+			println("\nYow! This is your boy, Ufuoma, here.")
 			println("\nPlease select a workflow with either --illumina or --ont\n")
+			println("then indicate the location of the raw reads (i.e., after --reads)\n")
+			println("and where to place the results (i.e., after --out_dir)\n")
+			println("\nFor example,\n")
+			println("\nnextflow run Karumata --illumina --reads raw_fastq --out_dir results_illumina \n")
 			System.exit(1)
 		}
 		
